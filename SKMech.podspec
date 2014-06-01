@@ -8,11 +8,10 @@ Pod::Spec.new do |s|
   s.name             = "SKMech"
   s.version          = "0.1.0"
   s.summary          = "SpriteKit tools."
-  # s.homepage         = "http://EXAMPLE/NAME"
-  # s.screenshots      = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
+  s.homepage         = "http://github.com/adriancooney/SKMech"
   s.author           = { "Adrian Cooney" => "cooney.adrian@gmail.com" }
-  # s.source           = { :git => "http://EXAMPLE/NAME.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/adriancooney/SKMech.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/adrian_cooney'
 
   s.platform     = :ios, '7.0'
