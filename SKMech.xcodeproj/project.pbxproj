@@ -14,8 +14,8 @@
 		3A4014BA193A44F40017D9CF /* libSKMech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4014A2193A44F40017D9CF /* libSKMech.a */; };
 		3A4014C0193A44F40017D9CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A4014BE193A44F40017D9CF /* InfoPlist.strings */; };
 		3A4014C2193A44F40017D9CF /* SKMechTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014C1193A44F40017D9CF /* SKMechTests.m */; };
-		3A4014DB193A49BC0017D9CF /* SKAction+SKMechMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014D9193A49BC0017D9CF /* SKAction+SKMechMove.m */; };
-		3A4014DC193A49BC0017D9CF /* SKAction+SKMechMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014D9193A49BC0017D9CF /* SKAction+SKMechMove.m */; };
+		3A4014DB193A49BC0017D9CF /* SKAction+SKMech.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */; };
+		3A4014DC193A49BC0017D9CF /* SKAction+SKMech.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */; };
 		3A4014DD193A49BC0017D9CF /* SKEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014DA193A49BC0017D9CF /* SKEasing.m */; };
 		3A4014DE193A49BC0017D9CF /* SKEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014DA193A49BC0017D9CF /* SKEasing.m */; };
 		3A721261193B6CA60015997D /* SKPathElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A721260193B6CA60015997D /* SKPathElement.m */; };
@@ -57,9 +57,9 @@
 		3A4014BD193A44F40017D9CF /* SKMechTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SKMechTests-Info.plist"; sourceTree = "<group>"; };
 		3A4014BF193A44F40017D9CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A4014C1193A44F40017D9CF /* SKMechTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKMechTests.m; sourceTree = "<group>"; };
-		3A4014D7193A49BC0017D9CF /* SKAction+SKMechMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKMechMove.h"; path = "Classes/SKAction+SKMechMove.h"; sourceTree = SOURCE_ROOT; };
+		3A4014D7193A49BC0017D9CF /* SKAction+SKMech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SKAction+SKMech.h"; path = "Classes/SKAction+SKMech.h"; sourceTree = SOURCE_ROOT; };
 		3A4014D8193A49BC0017D9CF /* SKEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKEasing.h; path = Classes/SKEasing.h; sourceTree = SOURCE_ROOT; };
-		3A4014D9193A49BC0017D9CF /* SKAction+SKMechMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKAction+SKMechMove.m"; path = "Classes/SKAction+SKMechMove.m"; sourceTree = SOURCE_ROOT; };
+		3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKAction+SKMech.m"; path = "Classes/SKAction+SKMech.m"; sourceTree = SOURCE_ROOT; };
 		3A4014DA193A49BC0017D9CF /* SKEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKEasing.m; path = Classes/SKEasing.m; sourceTree = SOURCE_ROOT; };
 		3A72125C193B6BA70015997D /* SKPathElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKPathElement.h; path = Classes/SKPathElement.h; sourceTree = SOURCE_ROOT; };
 		3A721260193B6CA60015997D /* SKPathElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKPathElement.m; path = Classes/SKPathElement.m; sourceTree = SOURCE_ROOT; };
@@ -124,8 +124,8 @@
 		3A4014A7193A44F40017D9CF /* SKMech */ = {
 			isa = PBXGroup;
 			children = (
-				3A4014D7193A49BC0017D9CF /* SKAction+SKMechMove.h */,
-				3A4014D9193A49BC0017D9CF /* SKAction+SKMechMove.m */,
+				3A4014D7193A49BC0017D9CF /* SKAction+SKMech.h */,
+				3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */,
 				3AD4F8B6193AB33D00139147 /* SKPath.h */,
 				3AD4F8B7193AB33D00139147 /* SKPath.m */,
 				3A72125C193B6BA70015997D /* SKPathElement.h */,
@@ -247,7 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4014DD193A49BC0017D9CF /* SKEasing.m in Sources */,
-				3A4014DB193A49BC0017D9CF /* SKAction+SKMechMove.m in Sources */,
+				3A4014DB193A49BC0017D9CF /* SKAction+SKMech.m in Sources */,
 				3AD4F8B8193AB33D00139147 /* SKPath.m in Sources */,
 				3A721261193B6CA60015997D /* SKPathElement.m in Sources */,
 			);
@@ -258,7 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A4014C2193A44F40017D9CF /* SKMechTests.m in Sources */,
-				3A4014DC193A49BC0017D9CF /* SKAction+SKMechMove.m in Sources */,
+				3A4014DC193A49BC0017D9CF /* SKAction+SKMech.m in Sources */,
 				3A721264193B73CF0015997D /* SKPathTest.m in Sources */,
 				3AD4F8B9193AB33D00139147 /* SKPath.m in Sources */,
 				3A4014DE193A49BC0017D9CF /* SKEasing.m in Sources */,

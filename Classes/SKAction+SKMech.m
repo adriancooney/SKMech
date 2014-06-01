@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Adrian Cooney. All rights reserved.
 //
 
-#import "SKAction+SKMechMove.h"
+#import "SKAction+SKMech.h"
 
 @implementation SKAction (SKMech)
 +(SKAction *) moveTo:(CGPoint)point duration:(NSTimeInterval)duration easing:(SKEasing *)easing {
@@ -41,8 +41,6 @@
     NSUInteger length = [points count];
     CGFloat interval = 1.0f/(CGFloat)length;
     
-    NSLog(@"%@", points);
-    
     return [SKAction customActionWithDuration:duration actionBlock:^(SKNode *node, CGFloat elapsedTime) {
         CGFloat progress = elapsedTime/duration;
         CGFloat ease = [easing progress:progress];
@@ -52,8 +50,6 @@
         NSUInteger index = floor((ease - mod)/interval);
         if(index < length) {
             CGPoint a = [points[index] CGPointValue];
-            
-            NSLog(@"m = %f, i = %lu, e = %f, p = %f, l = %lu", mod, (unsigned long)index, ease, progress, length);
             
             if(index < (length - 1)) {
                 CGPoint b = [points[index + 1] CGPointValue];

@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 Adrian Cooney. All rights reserved.
 //
 
-#import "SKAction+SKMechMove.h"
+#import "SKAction+SKMech.h"
 #import "SKEasing.h"
 #import "SKPath.h"
