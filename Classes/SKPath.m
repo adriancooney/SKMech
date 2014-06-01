@@ -1,13 +1,10 @@
-//
-//  SKPath.m
-//  SKMech
-//
-//  Created by Adrian Cooney on 01/06/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
 
 #import "SKPath.h"
 
+/**
+ * CGPathApplierFunction sent to CGPathApply to push CGPathElement
+ * into NSArray of SKPathElement.
+ */
 void processPathElement(void* info, const CGPathElement* element) {
     NSMutableArray *elements = (__bridge NSMutableArray *)info;
     SKPathElement *elem = [SKPathElement new];
@@ -39,14 +36,32 @@ void processPathElement(void* info, const CGPathElement* element) {
 }
 
 @implementation SKPath
+/**
+ * Convert CGPath to NSArray of SKPathElements.
+ */
 +(NSArray *) pathToArray: (CGPathRef)path {
     NSMutableArray *elements = [NSMutableArray new];
     CGPathApply(path, (__bridge void *)(elements), processPathElement);
     return elements;
 }
 
+
+/*
+ * SEGMENTS denotes the amount of segments a
+ * curve should be divided into.
+ * TODO: Do this pragmatically.
+ */
 #define SEGMENTS 40
 
+/**
+ * Interpolate a CGPath and return an NSArray
+ * of NSPoints along the the path. To convert 
+ * NSPoint to CGPoint, make sure CoreGraphics 
+ * is imported and do:
+ *
+ *    CGPoint p = [my_ns_point CGPointValue]
+ *
+ */
 +(NSArray *) interpolatePath:(CGPathRef)path {
     NSArray *elements = [SKPath pathToArray:path];
     NSMutableArray *points = [NSMutableArray new];
@@ -112,6 +127,11 @@ void processPathElement(void* info, const CGPathElement* element) {
     return points;
 }
 
+/**
+ * Interpolate a line between two points
+ * and return an NSArray of NSPoints going
+ * from a to b.
+ */
 +(NSArray *) interpolateLineSegment:(CGPoint)start end:(CGPoint)end segments:(NSUInteger)segments {
     NSMutableArray *points = [[NSMutableArray alloc] initWithCapacity:segments];
     
@@ -123,26 +143,41 @@ void processPathElement(void* info, const CGPathElement* element) {
     return points;
 }
 
+/**
+ * Return the distance between two points.
+ */
 +(CGFloat) lengthOfLine: (CGPoint)start end: (CGPoint)end {
     return sqrt(pow(end.x - start.x, 2) + pow(end.y - start.y, 2));
 }
 
+/**
+ * Return a point between two points at a percent.
+ */
 +(CGPoint) pointInLine:(CGPoint)start end:(CGPoint)end progress:(CGFloat)t {
     return CGPointMake(start.x - ((start.x - end.x) * t), start.y - ((start.y - end.y) * t));
 }
 
+/**
+ * Quad curve interpolation.
+ */
 +(CGPoint) pointInQuadCurve:(CGPoint)p1 controlPoint:(CGPoint)cp end:(CGPoint)p2 progress:(CGFloat)t{
     CGPoint d1 = [SKPath pointInLine:p1 end:cp progress:t];
     CGPoint d2 = [SKPath pointInLine:cp end:p2 progress:t];
     return [SKPath pointInLine:d1 end:d2 progress:t];
 }
 
+/**
+ * Cubic curve interpolation.
+ */
 +(CGPoint) pointInCubicCurve:(CGPoint)p1 controlPoint1:(CGPoint)cp1 controlPoint2:(CGPoint)cp2 end:(CGPoint)p2 progress:(CGFloat)t {
     CGPoint d1 = [SKPath pointInQuadCurve:p1 controlPoint:cp1 end:cp2 progress:t];
     CGPoint d2 = [SKPath pointInQuadCurve:cp1 controlPoint:cp2 end:p2 progress:t];
     return [SKPath pointInLine:d1 end:d2 progress:t];
 }
 
+/**
+ * Quntic curve interpolation.
+ */
 +(CGPoint) pointInQunticCurve:(CGPoint)p1 controlPoint1:(CGPoint)cp1 controlPoint2:(CGPoint)cp2 controlPoint3:(CGPoint)cp3 end:(CGPoint)p2 progress:(CGFloat)t {
     CGPoint d1 = [SKPath pointInCubicCurve:p1 controlPoint1:cp1 controlPoint2:cp2 end:cp3 progress:t];
     CGPoint d2 = [SKPath pointInCubicCurve:cp1 controlPoint1:cp2 controlPoint2:cp3 end:p2 progress:t];

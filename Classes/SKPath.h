@@ -1,11 +1,8 @@
-//
-//  SKPath.h
-//  SKMech
-//
-//  Created by Adrian Cooney on 01/06/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
-
+/*
+ * SKPath is SKMech's CGPath functions
+ * which include converting CGPaths to
+ * points and quad/cubic/quntic interpolation.
+ */
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "SKPathElement.h"

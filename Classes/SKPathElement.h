@@ -1,11 +1,8 @@
-//
-//  SKPathElement.h
-//  SKMech
-//
-//  Created by Adrian Cooney on 01/06/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
-
+/**
+ * SKPathElement is just a proxy
+ * class convertin CGPathElement
+ * to a storeable Object.
+ */
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 

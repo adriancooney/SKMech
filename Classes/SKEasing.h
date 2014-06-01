@@ -1,11 +1,7 @@
-//
-//  SKEasing.h
-//  SKMech
-//
-//  Created by Adrian Cooney on 31/05/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
-
+/*
+ * SKEasing - SKMech's easing utility.
+ */
+ 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 

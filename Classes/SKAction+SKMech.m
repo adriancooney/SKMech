@@ -1,14 +1,10 @@
-//
-//  SKAction+SKMechMove.m
-//  SKMech
-//
-//  Created by Adrian Cooney on 31/05/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
 
 #import "SKAction+SKMech.h"
 
 @implementation SKAction (SKMech)
+/**
+ * Move node to another point.
+ */
 +(SKAction *) moveTo:(CGPoint)point duration:(NSTimeInterval)duration easing:(SKEasing *)easing {
     __block CGPoint startPoint, translation;
     
@@ -25,6 +21,9 @@
     } duration:duration];
 }
 
+/**
+ * Custom SKAction with start, end and progress block.
+ */
 +(SKAction *) customActionWithStart: (void (^)(SKNode *node)) start
     progress: (void (^)(SKNode *node, CGFloat elapsedTime, CGFloat progress)) progress
     end: (void (^)(SKNode *node)) end duration: (NSTimeInterval) duration {
@@ -36,6 +35,9 @@
     }];
 }
 
+/**
+ * Make a node follow a CGPath with custom easing.
+ */
 +(SKAction *) followPath:(CGPathRef)path duration:(NSTimeInterval)duration easing:(SKEasing *)easing {
     NSArray *points = [SKPath interpolatePath:path];
     NSUInteger length = [points count];

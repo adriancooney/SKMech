@@ -1,16 +1,14 @@
-//
-//  SKEasing.m
-//  SKMech
-//
-//  Created by Adrian Cooney on 31/05/2014.
-//  Copyright (c) 2014 Adrian Cooney. All rights reserved.
-//
 
 #import "SKEasing.h"
 
 static SKEasing *_linearEasing, *_easeOutEasing, *_easeInEasing;
 
 @implementation SKEasing
+/**
+ * Initilize some easings
+ * TODO: Make more easings.
+ * TODO: Precalculate easings.
+ */
 + (void) initialize {
     if (self == [SKEasing class]) {
         _linearEasing = [[SKEasing alloc] initWithCustomEasingFunction:^CGFloat(CGFloat x) {
@@ -58,10 +56,16 @@ static SKEasing *_linearEasing, *_easeOutEasing, *_easeInEasing;
     }
 }
 
+// Easing accessors
 +(SKEasing *) linear { return _linearEasing; }
 +(SKEasing *) easeOut { return _easeOutEasing; }
 +(SKEasing *) easeIn { return _easeInEasing; }
 
+/**
+ * Create SKEasing with custom easing function.
+ * Takes in variable CGFloat x (0-1) and returns 
+ * CGFloat y (0-1).
+ */
 -(id) initWithCustomEasingFunction:(CGFloat (^)(CGFloat))customEasingFunction {
     if(self = [super init]) {
         customEasing = customEasingFunction;
@@ -70,6 +74,10 @@ static SKEasing *_linearEasing, *_easeOutEasing, *_easeInEasing;
     return self;
 }
 
+/**
+ * Initilize easing with easing data (NSArray of
+ * NSNumbers between 0-1.
+ */
 +(SKEasing *) initWithEasingData:(NSArray *)data {
     CGFloat interval = 1/[data count];
     return [[SKEasing alloc] initWithCustomEasingFunction:^CGFloat(CGFloat x) {
