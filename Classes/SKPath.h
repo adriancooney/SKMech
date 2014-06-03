@@ -5,10 +5,16 @@
  */
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
-#import "SKPathElement.h"
+//#import "SKPathElements.m"
 
 @interface SKPath : NSObject
++(NSArray *) tokenizeSVGPath: (NSString *)path;
++(CGPathRef) pathFromSVGPath: (NSString *)path;
+
++(CGPathRef) invertPath: (CGPathRef)path;
+
 +(NSArray *) pathToArray: (CGPathRef) path;
+
 +(NSArray *) interpolatePath: (CGPathRef) path;
 +(NSArray *) interpolateLineSegment: (CGPoint)start end: (CGPoint)end segments: (NSUInteger)segments;
 
