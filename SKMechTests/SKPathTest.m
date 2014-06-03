@@ -38,6 +38,19 @@
     XCTAssertEqual(expectedMid.y, actualMid.y, @"Actual y not equal to expected y.");
 }
 
+-(void)testSVGTokenize {
+
+    NSString *safe = @"M70.062,0c0,0,4.478,-171.274,119.938,320s110.15,320,110.15,320";
+    NSString *spaces = @"M 70.062 0 c 0 0 4.478 -171.274 119.938 320 s 110.15 320 110.15 320";
+    NSString *multiple = @"M 70 50 L 90 100 150 150 200 250 Z";
+    
+//    NSLog(@"%@", [SKPath tokenizeSVGPath: safe]);
+}
+
+-(void)testSVGParse {
+    NSString *safe = @"M70.062,0c0,0,4.478,-171.274,119.938,320s110.15,320,110.15,320";
+    [SKPath parseSVGPath:safe];
+}
 
 
 @end
