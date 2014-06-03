@@ -12,5 +12,7 @@
     end: (void (^)(SKNode *node)) end duration: (NSTimeInterval) duration;
     
 +(SKAction *) moveTo: (CGPoint) point duration: (NSTimeInterval) duration easing: (SKEasing *) easing;
+
 +(SKAction *) followPath: (CGPathRef) path duration: (NSTimeInterval) duration easing: (SKEasing *) easing;
+
 @end
