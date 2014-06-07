@@ -18,4 +18,12 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Classes'
+  s.header_mappings_dir = 'Classes'
+  
+  s.subspec 'Library' do |ss|
+    ss.source_files = 'Classes/Library'
+    ss.subspec 'Trees' do |sss|
+      sss.source_files = 'Classes/Library/Trees'
+    end
+  end
 end
