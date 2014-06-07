@@ -12,6 +12,18 @@
 @implementation SKPathElement
 @end
 
+@interface SKPathBezierPoint : NSObject
+@property CGFloat t;
+@property CGPoint point;
+-(CGPoint) CGPointValue;
+@end
+
+@implementation SKPathBezierPoint
+-(CGPoint) CGPointValue {
+    return self.point;
+}
+@end
+
 /**
  * CGPathApplierFunction sent to CGPathApply to push CGPathElement
  * into NSArray of SKPathElement.
@@ -66,10 +78,12 @@ void processPathElement(void* info, const CGPathElement* element) {
 }
 
 /*
- * SEGMENTS denotes the amount of segments a
- * curve should be divided into.
- * TODO: Do this pragmatically.
+ * DISTANCE_BETWEEN_POINTS denotes the distance
+ * when interpolating between points on a curve
+ * or line.
  */
+#define DISTANCE_BETWEEN_POINTS 4
+
 #define SEGMENTS 40
 
 /**
@@ -95,11 +109,7 @@ void processPathElement(void* info, const CGPathElement* element) {
                 CGPoint cp2 = [element.points[1] CGPointValue];
                 CGPoint p2 = [element.points[2] CGPointValue];
                 
-                for(CGFloat i = 0.0f, incr = 1.0f/(CGFloat)SEGMENTS; i <= 1.000001f; i += incr) {
-                    [points addObject:
-                        [NSValue valueWithCGPoint:[SKPath pointInCubicCurve:p1 controlPoint1:cp1 controlPoint2:cp2 end:p2 progress:i]]
-                    ];
-                }
+                [points addObjectsFromArray:[SKPath interpolateCubicBezierCurve:p1 cp1:cp1 cp2:cp2 p2:p2]];
                 break;
             }
             
@@ -134,7 +144,7 @@ void processPathElement(void* info, const CGPathElement* element) {
                 [points addObjectsFromArray:
                     [SKPath interpolateLineSegment: a
                         end: b
-                        segments:[SKPath lengthOfLine:a end:b]/3]];
+                        segments:[SKPath lengthOfLine:a end:b]/DISTANCE_BETWEEN_POINTS]];
                 
                 [points addObject:[NSValue valueWithCGPoint:b]];
                 break;
@@ -160,6 +170,53 @@ void processPathElement(void* info, const CGPathElement* element) {
         ]];
     
     return points;
+}
+
++(NSArray *) interpolateCubicBezierCurve: (CGPoint) p1 cp1: (CGPoint)cp1 cp2: (CGPoint)cp2 p2: (CGPoint)p2 {
+    NSMutableArray *points = [NSMutableArray array];
+    
+    // Interpolate initially
+    for(NSUInteger i = 0; i < 40; i++) {
+        SKPathBezierPoint *p = [SKPathBezierPoint new];
+        p.t = (CGFloat)i/40;
+        p.point = [SKPath pointInCubicCurve:p1 controlPoint1:cp1 controlPoint2:cp2 end:p2 progress:p.t];
+        [points addObject:p];
+    }
+    
+    NSUInteger changes = 1;
+    
+    while(changes > 0) {
+        changes = 0;
+        for(NSUInteger i = 0, idx = 0, cache = points.count - 1; i < cache; i++, idx++) {
+            SKPathBezierPoint *bp1 = (SKPathBezierPoint *)points[idx];
+            SKPathBezierPoint *bp2 = (SKPathBezierPoint *)points[idx + 1];
+            CGFloat t1 = bp1.t;
+            CGFloat t2 = bp2.t;
+            CGPoint c1 = bp1.point;
+            CGPoint c2 = bp2.point;
+            CGFloat dist = [SKPath lengthOfLine:c1 end:c2];
+            
+            
+            if(dist > DISTANCE_BETWEEN_POINTS) {
+                SKPathBezierPoint *point = [SKPathBezierPoint new];
+                point.t = t1 + ((t2 - t1)/2);
+                point.point = [SKPath pointInCubicCurve:p1 controlPoint1:cp1 controlPoint2:cp2 end:p2 progress:point.t];
+                [points insertObject:point atIndex:++idx];
+                changes++;
+            }
+        }
+    }
+    
+    return points;
+}
+
+CGFloat averageDistance(NSArray *points) {
+    CGFloat total = 0;
+    NSUInteger count = points.count;
+    for(int i = 0; i < (count - 1); i++)
+        total += [SKPath lengthOfLine:((SKPathBezierPoint *)points[i]).point end:((SKPathBezierPoint *)points[i+1]).point];
+    
+    return total/count;
 }
 
 /**
@@ -499,5 +556,24 @@ CGPoint _relative(CGPoint current, CGPoint point) {
     }];
     
     return path.CGPath;
+}
+
+/**
+ * Get the distance between each of the points in an
+ * interpolated path.
+ */
++(CGFloat) getLengthOfInterpolatedPath:(NSArray *)path {
+    CGFloat length = 0;
+    for(NSUInteger i = 0, l = path.count - 1; i < l; i++)
+        length += [SKPath lengthOfLine:[path[i] CGPointValue] end:[path[i+1] CGPointValue]];
+    
+    return length;
+}
+
+/**
+ * Get the length of a CGPath
+ */
++(CGFloat) getLengthOfPath:(CGPathRef)path {
+    return [SKPath getLengthOfInterpolatedPath:[SKPath interpolatePath:path]];
 }
 @end
