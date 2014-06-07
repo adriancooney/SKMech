@@ -38,15 +38,16 @@
 /**
  * Make a node follow a CGPath with custom easing.
  */
-#define PATH_DEBUG 1
+#define PATH_DEBUG 0
 +(SKAction *) followPath:(CGPathRef)path duration:(NSTimeInterval)duration easing:(SKEasing *)easing {
     NSArray *points = [SKPath interpolatePath:path];
     NSUInteger length = [points count];
     CGFloat interval = 1.0f/(CGFloat)length;
     
     // Enable Debugging information about the paths
-#ifdef PATH_DEBUG
+#if PATH_DEBUG
     SKNode *debugPath = [SKNode node];
+    NSMutableDictionary *map = [NSMutableDictionary new];
     __block CGFloat previousIndex = 0;
     __block CGFloat previousInterval = 0;
 #endif
@@ -57,11 +58,11 @@
         
         // Find point
         CGFloat mod = fmod(ease, interval);
-        NSUInteger index = floor((ease - mod)/interval);
+        NSUInteger index = floor(ease * length);
         if(index < length) {
             CGPoint a = [points[index] CGPointValue];
 
-#ifdef PATH_DEBUG
+#if PATH_DEBUG
             if(![debugPath parent]) [[node parent] addChild:debugPath];
             if(![debugPath childNodeWithName:NSStringFromCGPoint(a)]) {
                 SKSpriteNode *p = [SKSpriteNode spriteNodeWithColor:[SKColor whiteColor] size:CGSizeMake(4, 4)];
@@ -70,19 +71,26 @@
                 [debugPath addChild:p];
             }
 
-            if(progress >= 0.98) [debugPath removeFromParent];
+            if(elapsedTime >= (duration - 0.05)) [debugPath removeFromParent], NSLog(@"%@", map);
             
             if(index > previousIndex) previousIndex++, previousInterval = 0;
 #endif
             
             if(index < (length - 1)) {
                 CGPoint b = [points[index + 1] CGPointValue];
-                CGFloat intv = (mod/interval);
-                if(previousInterval > intv) NSLog(@"GREATER INTERVAL:  %f, %f, %i, %f", mod, interval, index, (ease - mod)/interval);
-                else NSLog(@"Interval progress: %f, %f, %i, %f", mod, interval, index, intv);
-                CGPoint position = [SKPath pointInLine:a end:b progress:intv];
+//                CGFloat intv = (mod/interval);
+//                if(previousInterval > intv) NSLog(@"GREATER INTERVAL:  %f, %f, %i, %f", mod, interval, index, (ease - mod)/interval);
+//                else NSLog(@"Interval progress: %f, %f, %i, %f", mod, interval, index, (ease - mod)/interval);
+//                previousInterval = intv;
+//                
+//                NSString *num = [NSString stringWithFormat:@"%d", index];
+//                NSNumber *i = map[num];
+//                if(i != Nil) map[num] = [NSNumber numberWithInteger:[i integerValue] + 1];
+//                else map[num] = [NSNumber numberWithInteger:0];
+                CGPoint position = [SKPath pointInLine:a end:b progress:mod/interval];
+                
+                // Set the new position
                 node.position = position;
-                previousInterval = intv;
             } else node.position = a;
         }
     }];
