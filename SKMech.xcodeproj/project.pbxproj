@@ -19,9 +19,13 @@
 		3A4014DD193A49BC0017D9CF /* SKEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014DA193A49BC0017D9CF /* SKEasing.m */; };
 		3A4014DE193A49BC0017D9CF /* SKEasing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4014DA193A49BC0017D9CF /* SKEasing.m */; };
 		3A721264193B73CF0015997D /* SKPathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A721263193B73CF0015997D /* SKPathTest.m */; };
+		3ABADD75193E936D001BB1A9 /* SKTreeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABADD74193E936D001BB1A9 /* SKTreeTest.m */; };
+		3ABFC1F9193FE0B200C66ED0 /* SKTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFC1F2193FE0B200C66ED0 /* SKTree.m */; };
+		3ABFC1FA193FE0B200C66ED0 /* SKTreeBinary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFC1F4193FE0B200C66ED0 /* SKTreeBinary.m */; };
+		3ABFC1FB193FE0B200C66ED0 /* SKTreeBinaryNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFC1F6193FE0B200C66ED0 /* SKTreeBinaryNode.m */; };
+		3ABFC1FC193FE0B200C66ED0 /* SKTreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABFC1F8193FE0B200C66ED0 /* SKTreeNode.m */; };
 		3AD4F8B8193AB33D00139147 /* SKPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4F8B7193AB33D00139147 /* SKPath.m */; };
 		3AD4F8B9193AB33D00139147 /* SKPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD4F8B7193AB33D00139147 /* SKPath.m */; };
-		3AF52110193D678D007611EE /* SKPathElements.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF5210F193D678D007611EE /* SKPathElements.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +65,19 @@
 		3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SKAction+SKMech.m"; path = "Classes/SKAction+SKMech.m"; sourceTree = SOURCE_ROOT; };
 		3A4014DA193A49BC0017D9CF /* SKEasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKEasing.m; path = Classes/SKEasing.m; sourceTree = SOURCE_ROOT; };
 		3A721263193B73CF0015997D /* SKPathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKPathTest.m; sourceTree = "<group>"; };
+		3ABADD74193E936D001BB1A9 /* SKTreeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTreeTest.m; sourceTree = "<group>"; };
+		3ABFC1F1193FE0B200C66ED0 /* SKTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTree.h; sourceTree = "<group>"; };
+		3ABFC1F2193FE0B200C66ED0 /* SKTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTree.m; sourceTree = "<group>"; };
+		3ABFC1F3193FE0B200C66ED0 /* SKTreeBinary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTreeBinary.h; sourceTree = "<group>"; };
+		3ABFC1F4193FE0B200C66ED0 /* SKTreeBinary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTreeBinary.m; sourceTree = "<group>"; };
+		3ABFC1F5193FE0B200C66ED0 /* SKTreeBinaryNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTreeBinaryNode.h; sourceTree = "<group>"; };
+		3ABFC1F6193FE0B200C66ED0 /* SKTreeBinaryNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTreeBinaryNode.m; sourceTree = "<group>"; };
+		3ABFC1F7193FE0B200C66ED0 /* SKTreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTreeNode.h; sourceTree = "<group>"; };
+		3ABFC1F8193FE0B200C66ED0 /* SKTreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTreeNode.m; sourceTree = "<group>"; };
+		3ABFC1FD193FE6A200C66ED0 /* SKMech.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SKMech.podspec; sourceTree = SOURCE_ROOT; };
 		3AC95242193A51F1005DDC36 /* SKMech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKMech.h; path = Classes/SKMech.h; sourceTree = SOURCE_ROOT; };
 		3AD4F8B6193AB33D00139147 /* SKPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SKPath.h; path = Classes/SKPath.h; sourceTree = SOURCE_ROOT; };
 		3AD4F8B7193AB33D00139147 /* SKPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKPath.m; path = Classes/SKPath.m; sourceTree = SOURCE_ROOT; };
-		3AF5210F193D678D007611EE /* SKPathElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SKPathElements.m; path = ../Classes/SKPathElements.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +135,7 @@
 		3A4014A7193A44F40017D9CF /* SKMech */ = {
 			isa = PBXGroup;
 			children = (
-				3AF5210F193D678D007611EE /* SKPathElements.m */,
+				3ABADD6A193E4577001BB1A9 /* Library */,
 				3A4014D7193A49BC0017D9CF /* SKAction+SKMech.h */,
 				3A4014D9193A49BC0017D9CF /* SKAction+SKMech.m */,
 				3AD4F8B6193AB33D00139147 /* SKPath.h */,
@@ -130,6 +143,7 @@
 				3AC95242193A51F1005DDC36 /* SKMech.h */,
 				3A4014D8193A49BC0017D9CF /* SKEasing.h */,
 				3A4014DA193A49BC0017D9CF /* SKEasing.m */,
+				3ABFC1FD193FE6A200C66ED0 /* SKMech.podspec */,
 				3A4014A8193A44F40017D9CF /* Supporting Files */,
 			);
 			path = SKMech;
@@ -149,6 +163,7 @@
 				3A4014C1193A44F40017D9CF /* SKMechTests.m */,
 				3A721263193B73CF0015997D /* SKPathTest.m */,
 				3A4014BC193A44F40017D9CF /* Supporting Files */,
+				3ABADD74193E936D001BB1A9 /* SKTreeTest.m */,
 			);
 			path = SKMechTests;
 			sourceTree = "<group>";
@@ -160,6 +175,30 @@
 				3A4014BE193A44F40017D9CF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3ABADD6A193E4577001BB1A9 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				3ABFC1F0193FE0B200C66ED0 /* Trees */,
+			);
+			name = Library;
+			path = Classes/Library;
+			sourceTree = SOURCE_ROOT;
+		};
+		3ABFC1F0193FE0B200C66ED0 /* Trees */ = {
+			isa = PBXGroup;
+			children = (
+				3ABFC1F1193FE0B200C66ED0 /* SKTree.h */,
+				3ABFC1F2193FE0B200C66ED0 /* SKTree.m */,
+				3ABFC1F3193FE0B200C66ED0 /* SKTreeBinary.h */,
+				3ABFC1F4193FE0B200C66ED0 /* SKTreeBinary.m */,
+				3ABFC1F5193FE0B200C66ED0 /* SKTreeBinaryNode.h */,
+				3ABFC1F6193FE0B200C66ED0 /* SKTreeBinaryNode.m */,
+				3ABFC1F7193FE0B200C66ED0 /* SKTreeNode.h */,
+				3ABFC1F8193FE0B200C66ED0 /* SKTreeNode.m */,
+			);
+			path = Trees;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,10 +282,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ABFC1FA193FE0B200C66ED0 /* SKTreeBinary.m in Sources */,
 				3A4014DD193A49BC0017D9CF /* SKEasing.m in Sources */,
+				3ABFC1F9193FE0B200C66ED0 /* SKTree.m in Sources */,
 				3A4014DB193A49BC0017D9CF /* SKAction+SKMech.m in Sources */,
+				3ABFC1FB193FE0B200C66ED0 /* SKTreeBinaryNode.m in Sources */,
+				3ABFC1FC193FE0B200C66ED0 /* SKTreeNode.m in Sources */,
 				3AD4F8B8193AB33D00139147 /* SKPath.m in Sources */,
-				3AF52110193D678D007611EE /* SKPathElements.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +301,7 @@
 				3A721264193B73CF0015997D /* SKPathTest.m in Sources */,
 				3AD4F8B9193AB33D00139147 /* SKPath.m in Sources */,
 				3A4014DE193A49BC0017D9CF /* SKEasing.m in Sources */,
+				3ABADD75193E936D001BB1A9 /* SKTreeTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
