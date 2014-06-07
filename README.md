@@ -5,6 +5,7 @@ SKMech is a set of utilities for SpriteKit. So far, SKMech has the following fea
 * Importable easing data.
 * Quad, Cubic and Quntic bezier curver interpolation of CGPath's.
 * Convert CGPaths to NSArray of points.
+* Import SVG path string and draw path.
 
 ## Installation
 
